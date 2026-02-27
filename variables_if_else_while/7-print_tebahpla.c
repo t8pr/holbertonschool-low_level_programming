@@ -1,21 +1,22 @@
 #include <stdio.h>
 
 /**
- * main - Prints the lowercase alphabet in reverse,
- * followed by a new line
+ * main - Prints all possible combinations of single-digit numbers.
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-char letter = 'z';
-
-while (letter >= 'a')
+int nums = '0';
+while (nums <= '9')
 {
-putchar(letter);
-letter--;
+putchar(nums);
+putchar(',');
+putchar(' ');
+nums++;
 }
-putchar('\n');
 
-return (0);
+
+putchar('\n');
+return(0);
 }
