@@ -33,4 +33,3 @@ i++;
 
 return (res * sign);
 }
-
