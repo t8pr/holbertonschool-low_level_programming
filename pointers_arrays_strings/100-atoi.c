@@ -15,7 +15,6 @@ int found_digit = 0;
 
 while (s[i] != '\0')
 {
-/* Handle signs */
 if (s[i] == '-')
 {
 sign *= -1;
@@ -25,7 +24,6 @@ else if (s[i] >= '0' && s[i] <= '9')
 found_digit = 1;
 res = (res * 10) + (s[i] - '0');
 }
-/* If we already found digits and hit a non-digit, stop */
 else if (found_digit)
 {
 break;
