@@ -9,9 +9,10 @@
  */
 int main(int argc, char *argv[])
 {
-(void)argc; /* We don't use argc here, so we cast it to void to avoid warnings */
+(void)argc;
 
 printf("%s\n", argv[0]);
 
 return (0);
 }
+ 
