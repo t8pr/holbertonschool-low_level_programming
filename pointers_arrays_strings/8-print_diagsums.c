@@ -4,7 +4,7 @@
 /**
  * print_diagsums - prints the sum of the two diagonals
  * of a square matrix of integers
- * @a: pointer to the start of the matrix (cast as an int pointer)
+ * @a: pointer to the start of the matrix
  * @size: the width/height of the matrix
  *
  * Return: void
@@ -17,13 +17,10 @@ long int sum2 = 0;
 
 for (i = 0; i < size; i++)
 {
-/* * Main diagonal: row i, column i.
-* Flat index = (row * size) + column
-*/
+/* Main diagonal: row i, column i */
 sum1 += a[i * size + i];
 
-/* * Anti-diagonal: row i, column (size - 1 - i)
-*/
+/* Anti-diagonal: row i, column (size - 1 - i) */
 sum2 += a[i * size + (size - 1 - i)];
 }
 
