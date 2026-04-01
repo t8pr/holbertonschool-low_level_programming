@@ -10,26 +10,26 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	char *array;
-	unsigned int i;
+char *array;
+unsigned int i;
 
-	/* 1. Validate the size */
-	if (size == 0)
-		return (NULL);
+/* 1. Validate the size */
+if (size == 0)
+return (NULL);
 
-	/* 2. Allocate memory on the heap */
-	array = malloc(sizeof(char) * size);
+/* 2. Allocate memory on the heap */
+array = malloc(sizeof(char) * size);
 
-	/* 3. Check if malloc failed */
-	if (array == NULL)
-		return (NULL);
+/* 3. Check if malloc failed */
+if (array == NULL)
+return (NULL);
 
-	/* 4. Initialize the array with the specific char */
-	for (i = 0; i < size; i++)
-	{
-		array[i] = c;
-	}
+/* 4. Initialize the array with the specific char */
+for (i = 0; i < size; i++)
+{
+array[i] = c;
+}
 
-	/* 5. Return the pointer to the newly created array */
-	return (array);
+/* 5. Return the pointer to the newly created array */
+return (array);
 }
