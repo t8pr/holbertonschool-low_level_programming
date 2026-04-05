@@ -6,9 +6,6 @@
  * @name: Pointer to a char representing the dog's name
  * @age: Float representing the dog's age
  * @owner: Pointer to a char representing the owner's name
- *
- * Description: This struct is used to store the name, age, and owner
- * of a dog for the low-level programming structures project.
  */
 struct dog
 {
@@ -16,5 +13,14 @@ char *name;
 float age;
 char *owner;
 };
+
+/**
+ * dog_t - Typedef for struct dog
+ */
+typedef struct dog dog_t;
+
+/* Function Prototypes */
+void init_dog(struct dog *d, char *name, float age, char *owner);
+void print_dog(struct dog *d);
 
 #endif /* DOG_H */
