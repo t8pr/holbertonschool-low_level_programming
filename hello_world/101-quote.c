@@ -3,10 +3,9 @@
 /**
  * main - Entry point
  *
- * Description: Prints a specific quote to the standard error
- * without using printf or puts.
+ * Description: Prints a specific quote to the standard error.
  *
- * Return: Always 1 (Success/Requirement)
+ * Return: Always 1
  */
 int main(void)
 {
