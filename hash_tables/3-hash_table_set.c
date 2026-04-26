@@ -1,0 +1,63 @@
+#include "hash_tables.h"
+
+/**
+ * hash_table_set - Adds an element to the hash table.
+ * @ht: A pointer to the hash table.
+ * @key: The key to add - cannot be an empty string.
+ * @value: The value associated with the key.
+ *
+ * Return: 1 if it succeeded, 0 otherwise.
+ */
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+{
+	hash_node_t *new_node, *current;
+	char *value_copy;
+	unsigned long int index;
+
+	/* Input validation */
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
+		return (0);
+
+	value_copy = strdup(value);
+	if (value_copy == NULL)
+		return (0);
+
+	/* Get the index for this key */
+	index = key_index((const unsigned char *)key, ht->size);
+	current = ht->array[index];
+
+	/* Step 1: Check if key already exists, if so update the value */
+	while (current != NULL)
+	{
+		if (strcmp(current->key, key) == 0)
+		{
+			free(current->value);
+			current->value = value_copy;
+			return (1);
+		}
+		current = current->next;
+	}
+
+	/* Step 2: Key does not exist, create new node */
+	new_node = malloc(sizeof(hash_node_t));
+	if (new_node == NULL)
+	{
+		free(value_copy);
+		return (0);
+	}
+
+	new_node->key = strdup(key);
+	if (new_node->key == NULL)
+	{
+		free(new_node);
+		free(value_copy);
+		return (0);
+	}
+	new_node->value = value_copy;
+
+	/* Insert at the beginning of the linked list */
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
+
+	return (1);
+}
