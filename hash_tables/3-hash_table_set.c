@@ -14,7 +14,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	char *value_copy;
 	unsigned long int index;
 
-	/* Input validation */
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
 
@@ -22,11 +21,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (value_copy == NULL)
 		return (0);
 
-	/* Get the index for this key */
 	index = key_index((const unsigned char *)key, ht->size);
 	current = ht->array[index];
 
-	/* Step 1: Check if key already exists, if so update the value */
 	while (current != NULL)
 	{
 		if (strcmp(current->key, key) == 0)
@@ -38,14 +35,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		current = current->next;
 	}
 
-	/* Step 2: Key does not exist, create new node */
 	new_node = malloc(sizeof(hash_node_t));
 	if (new_node == NULL)
 	{
 		free(value_copy);
 		return (0);
 	}
-
 	new_node->key = strdup(key);
 	if (new_node->key == NULL)
 	{
@@ -54,10 +49,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	new_node->value = value_copy;
-
-	/* Insert at the beginning of the linked list */
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
-
 	return (1);
 }
